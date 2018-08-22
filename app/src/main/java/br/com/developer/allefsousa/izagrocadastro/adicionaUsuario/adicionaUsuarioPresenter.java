@@ -1,4 +1,4 @@
-package br.com.developer.allefsousa.izagrocadastro.taskCrudUsuario;
+package br.com.developer.allefsousa.izagrocadastro.adicionaUsuario;
 
 import android.content.Context;
 import android.text.TextUtils;
@@ -10,13 +10,13 @@ import br.com.developer.allefsousa.izagrocadastro.data.source.local.DatabaseHelp
  * Created by allef on 22/08/2018.
  */
 
-public class CrudUsuarioPresenter implements CrudUsuarioContract.presenter {
+public class adicionaUsuarioPresenter implements adicionaUsuarioContract.presenter {
 
     private DatabaseHelper db;
-    private CrudUsuarioContract.view Mview;
+    private adicionaUsuarioContract.view Mview;
     private Context context;
 
-    public CrudUsuarioPresenter(CrudUsuarioContract.view mview, Context context) {
+    public adicionaUsuarioPresenter(adicionaUsuarioContract.view mview, Context context) {
         Mview = mview;
         this.context = context;
         db = new DatabaseHelper(context);

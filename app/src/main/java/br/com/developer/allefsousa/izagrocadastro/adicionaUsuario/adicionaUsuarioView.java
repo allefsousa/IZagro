@@ -1,11 +1,10 @@
-package br.com.developer.allefsousa.izagrocadastro.taskCrudUsuario;
+package br.com.developer.allefsousa.izagrocadastro.adicionaUsuario;
 
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import br.com.developer.allefsousa.izagrocadastro.R;
 import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
@@ -15,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class CrudUsuarioView extends AppCompatActivity implements CrudUsuarioContract.view {
+public class adicionaUsuarioView extends AppCompatActivity implements adicionaUsuarioContract.view {
     // Button
     @BindView(R.id.butAdicionar)
     Button btnAdicionar;
@@ -45,13 +44,13 @@ public class CrudUsuarioView extends AppCompatActivity implements CrudUsuarioCon
 
     private Usuario usuario;
 
-    private CrudUsuarioContract.presenter Mpresenter;
+    private adicionaUsuarioContract.presenter Mpresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        Mpresenter = new CrudUsuarioPresenter(this,this);
+        Mpresenter = new adicionaUsuarioPresenter(this,this);
         usuario = new Usuario();
         edtDataNasc.addTextChangedListener(Mask.insert("##/##/####", edtDataNasc));
 

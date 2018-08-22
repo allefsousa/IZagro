@@ -6,7 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
-import br.com.developer.allefsousa.izagrocadastro.taskCrudUsuario.CrudUsuarioView;
+import br.com.developer.allefsousa.izagrocadastro.adicionaUsuario.adicionaUsuarioView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -24,7 +24,7 @@ public class ExibeUsuarioActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
-        fabAddUsuario.setOnClickListener(View -> startActivity(new Intent(ExibeUsuarioActivity.this, CrudUsuarioView.class)));
+        fabAddUsuario.setOnClickListener(View -> startActivity(new Intent(ExibeUsuarioActivity.this, adicionaUsuarioView.class)));
 
 
     }

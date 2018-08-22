@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:padding="10dp"
     android:layout_height="match_parent"
-    tools:context="br.com.developer.allefsousa.izagrocadastro.taskCrudUsuario.CrudUsuarioView">
+    tools:context="br.com.developer.allefsousa.izagrocadastro.adicionaUsuario.adicionaUsuarioView">
 
 
     <android.support.design.widget.TextInputLayout

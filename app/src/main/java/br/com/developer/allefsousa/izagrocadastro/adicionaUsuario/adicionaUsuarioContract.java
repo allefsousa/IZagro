@@ -1,4 +1,4 @@
-package br.com.developer.allefsousa.izagrocadastro.taskCrudUsuario;
+package br.com.developer.allefsousa.izagrocadastro.adicionaUsuario;
 
 import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 
@@ -6,7 +6,7 @@ import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
  * Created by allef on 22/08/2018.
  */
 
-public interface CrudUsuarioContract {
+public interface adicionaUsuarioContract {
 
     interface view {
 
