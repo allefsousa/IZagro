@@ -18,9 +18,11 @@ public interface CrudUsuarioContract {
 
         void usuarioDeletado();
 
-        void UsuarioAdicionado();
+        void UsuarioAdicionado(Long id);
 
         void FalhaAoAdicionar();
+
+        void Limpar();
     }
 
     interface presenter {

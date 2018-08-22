@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".taskCrudUsuario.MainActivity">
+        <activity android:name=".taskCrudUsuario.CrudUsuarioView"
+            android:parentActivityName=".ExibeUsuarioActivity">
+        </activity>
+        <activity
+            android:name=".ExibeUsuarioActivity"
+            android:label="@string/title_activity_exibe_usuario"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

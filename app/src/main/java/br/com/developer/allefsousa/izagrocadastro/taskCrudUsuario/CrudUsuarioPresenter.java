@@ -1,10 +1,6 @@
 package br.com.developer.allefsousa.izagrocadastro.taskCrudUsuario;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.provider.ContactsContract;
-import android.support.annotation.NonNull;
 
 import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 import br.com.developer.allefsousa.izagrocadastro.data.source.local.DatabaseHelper;
@@ -15,9 +11,9 @@ import br.com.developer.allefsousa.izagrocadastro.data.source.local.DatabaseHelp
 
 public class CrudUsuarioPresenter implements CrudUsuarioContract.presenter {
 
+    private DatabaseHelper db;
     private CrudUsuarioContract.view Mview;
     private Context context;
-    DatabaseHelper db;
 
     public CrudUsuarioPresenter(CrudUsuarioContract.view mview, Context context) {
         Mview = mview;
@@ -26,13 +22,13 @@ public class CrudUsuarioPresenter implements CrudUsuarioContract.presenter {
     }
 
 
-
     @Override
     public void postUsuario(Usuario usuario) {
         Long id = db.postUsuario(usuario);
-        if (id != 0){
-            Mview.UsuarioAdicionado();
-        }else {
+        if (id != 0) {
+            Mview.UsuarioAdicionado(id);
+            Mview.Limpar();
+        } else {
             Mview.FalhaAoAdicionar();
         }
 

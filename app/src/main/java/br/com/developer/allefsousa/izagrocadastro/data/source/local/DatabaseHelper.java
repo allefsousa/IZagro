@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public long postUsuario(Usuario User) {
-        // get writable database as we want to write data
+
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -56,20 +56,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(Usuario.COLUMN_EMAIL, User.getEmail());
         values.put(Usuario.COLUMN_DATANASC, User.getDataNasc());
 
-        // insert row
+
         long id = db.insert(Usuario.TABLE_NAME, null, values);
 
-        // close db connection
+
         db.close();
 
-        // return newly inserted row id
         return id;
     }
 
     public Usuario getUsuario(long id) {
-        // get readable database as we are not inserting anything
+
+      // abrindo a conexao com o bd
         SQLiteDatabase db = this.getReadableDatabase();
 
+        // cursor paar receber os dados
         Cursor cursor = db.query(Usuario.TABLE_NAME,
                 new String[]{Usuario.COLUMN_ID, Usuario.COLUMN_NOME, Usuario.COLUMN_SOBRENOME,Usuario.COLUMN_EMAIL,Usuario.COLUMN_DATANASC},
                 Usuario.COLUMN_ID + "=?",
@@ -78,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        // prepare note object
+        // preparando o objeto para ser retornado
         Usuario usuario = new Usuario(
                 cursor.getInt(cursor.getColumnIndex(Usuario.COLUMN_ID)),
                 cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_NOME)),
@@ -86,7 +87,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_EMAIL)),
                 cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_DATANASC)));
 
-        // close the db connection
+
         cursor.close();
 
         return usuario;
@@ -95,14 +96,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public List<Usuario> getAllUsuarios() {
         List<Usuario> notes = new ArrayList<>();
 
-        // Select All Query
+
         String selectQuery = "SELECT  * FROM " + Usuario.TABLE_NAME + " ORDER BY " +
                 Usuario.COLUMN_NOME + " DESC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        // looping through all rows and adding to list
+
         if (cursor.moveToFirst()) {
             do {
                 Usuario note = new Usuario();
@@ -116,10 +117,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
-        // close db connection
+
         db.close();
 
-        // return notes list
+
         return notes;
     }
 
@@ -132,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
 
 
-        // return count
+
         return count;
     }
 
@@ -145,7 +146,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(Usuario.COLUMN_EMAIL, user.getEmail());
         values.put(Usuario.COLUMN_DATANASC, user.getDataNasc());
 
-        // updating row
+
         return db.update(Usuario.TABLE_NAME, values, Usuario.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(user.getId())});
     }
