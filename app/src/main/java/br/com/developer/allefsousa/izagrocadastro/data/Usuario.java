@@ -5,6 +5,7 @@ package br.com.developer.allefsousa.izagrocadastro.data;
  */
 
 public class Usuario {
+
     public static final String TABLE_NAME = "notes";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NOME = "nome";
@@ -23,6 +24,13 @@ public class Usuario {
 
     public Usuario(int id, String nome, String sobrenome, String email, String dataNasc) {
         this.id = id;
+        this.nome = nome;
+        this.sobrenome = sobrenome;
+        this.email = email;
+        this.dataNasc = dataNasc;
+    }
+
+    public Usuario(String nome, String sobrenome, String email, String dataNasc) {
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.email = email;

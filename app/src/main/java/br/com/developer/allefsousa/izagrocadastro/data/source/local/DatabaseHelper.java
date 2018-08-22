@@ -1,8 +1,13 @@
 package br.com.developer.allefsousa.izagrocadastro.data.source.local;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 
@@ -39,4 +44,117 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // Create as tabelas
         onCreate(db);
     }
+
+    public long postUsuario(Usuario User) {
+        // get writable database as we want to write data
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put(Usuario.COLUMN_NOME, User.getNome());
+        values.put(Usuario.COLUMN_SOBRENOME, User.getSobrenome());
+        values.put(Usuario.COLUMN_EMAIL, User.getEmail());
+        values.put(Usuario.COLUMN_DATANASC, User.getDataNasc());
+
+        // insert row
+        long id = db.insert(Usuario.TABLE_NAME, null, values);
+
+        // close db connection
+        db.close();
+
+        // return newly inserted row id
+        return id;
+    }
+
+    public Usuario getUsuario(long id) {
+        // get readable database as we are not inserting anything
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.query(Usuario.TABLE_NAME,
+                new String[]{Usuario.COLUMN_ID, Usuario.COLUMN_NOME, Usuario.COLUMN_SOBRENOME,Usuario.COLUMN_EMAIL,Usuario.COLUMN_DATANASC},
+                Usuario.COLUMN_ID + "=?",
+                new String[]{String.valueOf(id)}, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        // prepare note object
+        Usuario usuario = new Usuario(
+                cursor.getInt(cursor.getColumnIndex(Usuario.COLUMN_ID)),
+                cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_NOME)),
+                cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_SOBRENOME)),
+                cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_EMAIL)),
+                cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_DATANASC)));
+
+        // close the db connection
+        cursor.close();
+
+        return usuario;
+    }
+
+    public List<Usuario> getAllUsuarios() {
+        List<Usuario> notes = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + Usuario.TABLE_NAME + " ORDER BY " +
+                Usuario.COLUMN_NOME + " DESC";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Usuario note = new Usuario();
+                note.setId(cursor.getInt(cursor.getColumnIndex(Usuario.COLUMN_ID)));
+                note.setNome(cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_NOME)));
+                note.setSobrenome(cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_SOBRENOME)));
+                note.setEmail(cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_EMAIL)));
+                note.setDataNasc(cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_DATANASC)));
+
+                notes.add(note);
+            } while (cursor.moveToNext());
+        }
+
+        // close db connection
+        db.close();
+
+        // return notes list
+        return notes;
+    }
+
+    public int getUsuarioCount() {
+        String countQuery = "SELECT  * FROM " + Usuario.TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(countQuery, null);
+
+        int count = cursor.getCount();
+        cursor.close();
+
+
+        // return count
+        return count;
+    }
+
+    public int putUsuario(Usuario user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Usuario.COLUMN_NOME, user.getNome());
+        values.put(Usuario.COLUMN_SOBRENOME, user.getSobrenome());
+        values.put(Usuario.COLUMN_EMAIL, user.getEmail());
+        values.put(Usuario.COLUMN_DATANASC, user.getDataNasc());
+
+        // updating row
+        return db.update(Usuario.TABLE_NAME, values, Usuario.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(user.getId())});
+    }
+
+    public void deleteUsuario(Usuario user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(Usuario.TABLE_NAME, Usuario.COLUMN_ID + " = ?",
+                new String[]{String.valueOf(user.getId())});
+        db.close();
+    }
+
 }
