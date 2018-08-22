@@ -1,6 +1,7 @@
 package br.com.developer.allefsousa.izagrocadastro.taskCrudUsuario;
 
 import android.content.Context;
+import android.text.TextUtils;
 
 import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 import br.com.developer.allefsousa.izagrocadastro.data.source.local.DatabaseHelper;
@@ -24,6 +25,8 @@ public class CrudUsuarioPresenter implements CrudUsuarioContract.presenter {
 
     @Override
     public void postUsuario(Usuario usuario) {
+
+
         Long id = db.postUsuario(usuario);
         if (id != 0) {
             Mview.UsuarioAdicionado(id);
@@ -36,22 +39,27 @@ public class CrudUsuarioPresenter implements CrudUsuarioContract.presenter {
     }
 
     @Override
-    public void putUsuario(Long id) {
+    public void validaDadosUsuario(Usuario usuario) {
+
+        if (TextUtils.isEmpty(usuario.getNome())) {
+            Mview.nomeEmBranco();
+
+        }
+        if (TextUtils.isEmpty(usuario.getSobrenome())){
+            Mview.sobrenomeEmBranco();
+        }
+        if (TextUtils.isEmpty(usuario.getDataNasc())){
+            Mview.dataNascBranco();
+
+        }
+        if (TextUtils.isEmpty(usuario.getEmail())){
+            Mview.emailEmBranco();
+        }
+        if (!TextUtils.isEmpty(usuario.getNome()) && !TextUtils.isEmpty(usuario.getSobrenome())&& !TextUtils.isEmpty(usuario.getDataNasc()) && !TextUtils.isEmpty(usuario.getEmail())){
+            postUsuario(usuario);
+        }
+
 
     }
 
-    @Override
-    public void getUsuario(Long id) {
-
-    }
-
-    @Override
-    public void getAllUsuario() {
-
-    }
-
-    @Override
-    public void deleteUsuario(Long id) {
-
-    }
 }

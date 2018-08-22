@@ -10,8 +10,10 @@ import android.widget.Toast;
 import br.com.developer.allefsousa.izagrocadastro.R;
 import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 import br.com.developer.allefsousa.izagrocadastro.utils.Mask;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class CrudUsuarioView extends AppCompatActivity implements CrudUsuarioContract.view {
     // Button
@@ -38,7 +40,10 @@ public class CrudUsuarioView extends AppCompatActivity implements CrudUsuarioCon
     @BindView(R.id.editDatanasc)
     EditText edtDataNasc;
 
-    Usuario usuario;
+    @BindString(R.string.app_name)
+    String appName;
+
+    private Usuario usuario;
 
     private CrudUsuarioContract.presenter Mpresenter;
     @Override
@@ -60,40 +65,28 @@ public class CrudUsuarioView extends AppCompatActivity implements CrudUsuarioCon
             usuario.setDataNasc(edtDataNasc.getText().toString());
 
             // enviando objeto para o presenter
-            Mpresenter.postUsuario(usuario);
+            Mpresenter.validaDadosUsuario(usuario);
         });
 
 
     }
 
-    @Override
-    public void usuarioInvalidoVazio() {
-
-    }
-
-    @Override
-    public void usuarioAdicionado() {
-
-    }
-
-    @Override
-    public void usuarioAtualizado() {
-
-    }
-
-    @Override
-    public void usuarioDeletado() {
-
-    }
 
     @Override
     public void UsuarioAdicionado(Long id) {
-        Toast.makeText(this, "Usuario Adicionado !!!! " +id, Toast.LENGTH_LONG).show();
+
+        new SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                .setTitleText(appName)
+                .setContentText("Cadastro Efetuado !")
+                .show();
     }
 
     @Override
     public void FalhaAoAdicionar() {
-        Toast.makeText(this, "Falhooooou", Toast.LENGTH_LONG).show();
+        new SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
+                .setTitleText(appName)
+                .setContentText("Falha ao Efetuar Cadastro !")
+                .show();
     }
 
     @Override
@@ -102,5 +95,30 @@ public class CrudUsuarioView extends AppCompatActivity implements CrudUsuarioCon
         edtSobrenome.getText().clear();
         edtDataNasc.getText().clear();
         edtEmail.getText().clear();
+        layoutEmail.setError("");
+        layoutDatanasc.setError("");
+        layoutSobrenome.setError("");
+        layoutNome.setError("");
+    }
+
+    @Override
+    public void nomeEmBranco() {
+        layoutNome.setError("Nome em Branco !!");
+    }
+
+    @Override
+    public void sobrenomeEmBranco() {
+        layoutSobrenome.setError("Sobrenome em Branco !!");
+    }
+
+    @Override
+    public void dataNascBranco() {
+        layoutDatanasc.setError("Data de Nascimento em Branco !!");
+    }
+
+
+    @Override
+    public void emailEmBranco() {
+        layoutEmail.setError("Email em Branco !!");
     }
 }

@@ -10,32 +10,27 @@ public interface CrudUsuarioContract {
 
     interface view {
 
-        void usuarioInvalidoVazio();
-
-        void usuarioAdicionado();
-
-        void usuarioAtualizado();
-
-        void usuarioDeletado();
-
         void UsuarioAdicionado(Long id);
 
         void FalhaAoAdicionar();
 
         void Limpar();
+
+        void nomeEmBranco();
+
+        void sobrenomeEmBranco();
+
+        void dataNascBranco();
+
+
+        void emailEmBranco();
     }
 
     interface presenter {
 
         void postUsuario(Usuario usuario);
+        void validaDadosUsuario(Usuario usuario);
 
-        void putUsuario(Long id);
-
-        void getUsuario(Long id);
-
-        void getAllUsuario();
-
-        void deleteUsuario(Long id);
 
 
     }
