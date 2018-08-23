@@ -1,4 +1,4 @@
-package br.com.developer.allefsousa.izagrocadastro.adicionaUsuario;
+package br.com.developer.allefsousa.izagrocadastro.postUsuario;
 
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class adicionaUsuarioView extends AppCompatActivity implements adicionaUsuarioContract.view {
+public class postUsuarioView extends AppCompatActivity implements postUsuarioContract.view {
     // Button
     @BindView(R.id.butAdicionar)
     Button btnAdicionar;
@@ -44,13 +44,14 @@ public class adicionaUsuarioView extends AppCompatActivity implements adicionaUs
 
     private Usuario usuario;
 
-    private adicionaUsuarioContract.presenter Mpresenter;
+    private postUsuarioContract.presenter Mpresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("Adicionar Cliente");
         ButterKnife.bind(this);
-        Mpresenter = new adicionaUsuarioPresenter(this,this);
+        Mpresenter = new postUsuarioPresenter(this,this);
         usuario = new Usuario();
         edtDataNasc.addTextChangedListener(Mask.insert("##/##/####", edtDataNasc));
 

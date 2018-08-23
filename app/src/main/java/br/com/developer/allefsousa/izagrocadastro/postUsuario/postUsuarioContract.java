@@ -1,4 +1,4 @@
-package br.com.developer.allefsousa.izagrocadastro.adicionaUsuario;
+package br.com.developer.allefsousa.izagrocadastro.postUsuario;
 
 import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 
@@ -6,7 +6,7 @@ import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
  * Created by allef on 22/08/2018.
  */
 
-public interface adicionaUsuarioContract {
+public interface postUsuarioContract {
 
     interface view {
 

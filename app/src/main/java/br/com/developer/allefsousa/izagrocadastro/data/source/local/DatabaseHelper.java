@@ -79,7 +79,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-        // preparando o objeto para ser retornado
+
         Usuario usuario = new Usuario(
                 cursor.getInt(cursor.getColumnIndex(Usuario.COLUMN_ID)),
                 cursor.getString(cursor.getColumnIndex(Usuario.COLUMN_NOME)),
@@ -98,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
         String selectQuery = "SELECT  * FROM " + Usuario.TABLE_NAME + " ORDER BY " +
-                Usuario.COLUMN_NOME + " DESC";
+                Usuario.COLUMN_ID + " DESC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -124,18 +124,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return notes;
     }
 
-    public int getUsuarioCount() {
-        String countQuery = "SELECT  * FROM " + Usuario.TABLE_NAME;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-
-        int count = cursor.getCount();
-        cursor.close();
-
-
-
-        return count;
-    }
 
     public int putUsuario(Usuario user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -155,6 +143,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(Usuario.TABLE_NAME, Usuario.COLUMN_ID + " = ?",
                 new String[]{String.valueOf(user.getId())});
+
         db.close();
     }
 

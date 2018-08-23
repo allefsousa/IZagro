@@ -6,12 +6,23 @@ package br.com.developer.allefsousa.izagrocadastro.data;
 
 public class Usuario {
 
+    //region Configuração Banco de dados
     public static final String TABLE_NAME = "notes";
     public static final String COLUMN_ID = "id";
     public static final String COLUMN_NOME = "nome";
     public static final String COLUMN_SOBRENOME = "sobrenome";
     public static final String COLUMN_EMAIL = "email";
     public static final String COLUMN_DATANASC = "datanasc";
+    // Create table SQL query
+    public static final String CREATE_TABLE =
+            "CREATE TABLE " + TABLE_NAME + "("
+                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + COLUMN_NOME + " TEXT,"
+                    + COLUMN_SOBRENOME + " TEXT,"
+                    + COLUMN_EMAIL + " TEXT,"
+                    + COLUMN_DATANASC + " TEXT"
+                    + ")";
+    //endregion
 
     private int id;
     private String nome;
@@ -37,15 +48,7 @@ public class Usuario {
         this.dataNasc = dataNasc;
     }
 
-    // Create table SQL query
-    public static final String CREATE_TABLE =
-            "CREATE TABLE " + TABLE_NAME + "("
-                    + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
-                    + COLUMN_NOME + " TEXT,"
-                    + COLUMN_SOBRENOME + " TEXT,"
-                    + COLUMN_EMAIL + " TEXT,"
-                    + COLUMN_DATANASC + " TEXT"
-                    + ")";
+
 
 
     public int getId() {
