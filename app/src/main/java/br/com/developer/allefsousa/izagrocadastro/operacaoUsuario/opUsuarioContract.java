@@ -6,6 +6,8 @@ import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 
 /**
  * Created by allef on 22/08/2018.
+ *
+ * Metodos que as classes View e Presenter Devem ter
  */
 
 public interface opUsuarioContract {

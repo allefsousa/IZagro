@@ -38,7 +38,6 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:' + rootProject.constraintlayoutVersion
 
     //Test
-    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:' + rootProject.junitVersion
     androidTestImplementation 'com.android.support.test:runner:' + rootProject.runnerVersion
     androidTestCompile 'com.android.support.test:rules:' + rootProject.rulesVersion
@@ -46,6 +45,7 @@ dependencies {
     // Test Espresso
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:' + rootProject.espressoVersion
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:' + rootProject.espressoVersion
+    androidTestCompile 'com.android.support.test.espresso:espresso-intents:'+ rootProject.espressoVersion
 
     //Test Mockito
     testCompile 'org.mockito:mockito-core:' + rootProject.mockitoVersion
@@ -55,7 +55,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:' + rootProject.butterKnifeVersion
     annotationProcessor 'com.jakewharton:butterknife-compiler:' + rootProject.butterKnifeVersion
 
+    // Material Riple Effects
     implementation 'com.balysv:material-ripple:' + rootProject.materialRipleVersion
+
+    // SweetAlert Mensagem
     implementation 'com.github.f0ris.sweetalert:library:' + rootProject.SweetAlertVersion
 
 }

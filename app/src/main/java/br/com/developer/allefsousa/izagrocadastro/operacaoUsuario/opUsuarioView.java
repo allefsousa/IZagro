@@ -74,6 +74,32 @@ public class opUsuarioView extends AppCompatActivity implements opUsuarioContrac
             }
         }));
 
+        /**
+         * Rotina adicionada para tirar a visibilidade do floataction button quando o recycler view for
+         * rodado
+         */
+        recyclerViewUsuarios.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    // Scroll Down
+                    if (fabAddUsuario.isShown()) {
+                        fabAddUsuario.hide();
+                    }
+                } else if (dy < 0) {
+                    // Scroll Up
+                    if (!fabAddUsuario.isShown()) {
+                        fabAddUsuario.show();
+                    }
+                }
+            }
+        });
 
     }
 
@@ -192,5 +218,7 @@ public class opUsuarioView extends AppCompatActivity implements opUsuarioContrac
 
         });
     }
+
+
 
 }

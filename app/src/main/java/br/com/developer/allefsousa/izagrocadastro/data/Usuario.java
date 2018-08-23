@@ -4,6 +4,9 @@ package br.com.developer.allefsousa.izagrocadastro.data;
  * Created by allef on 22/08/2018.
  */
 
+/**
+ * Classe de modelo do Objeto
+ */
 public class Usuario {
 
     //region Configuração Banco de dados

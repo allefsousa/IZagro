@@ -13,9 +13,12 @@ import br.com.developer.allefsousa.izagrocadastro.data.Usuario;
 
 /**
  * Created by allef on 22/08/2018.
+ *
+ * Classe responsavle pelas operações a serem realizadas no Banco de dados
+ *
  */
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper implements OperacoesInterface {
 
     // Versão Banco
     private static final int DATABASE_VERSION = 1;
@@ -28,7 +31,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    @Override
+    @Override // cria a tabela
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(Usuario.CREATE_TABLE);
@@ -45,6 +48,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    /**
+     * Metodo responsavel pelo Insert
+     * @param User
+     * @return
+     */
+    @Override
     public long postUsuario(Usuario User) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -65,6 +74,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return id;
     }
 
+    /**
+     * Metodo que faz o get com babse na id
+     * @param id
+     * @return
+     */
     public Usuario getUsuario(long id) {
 
       // abrindo a conexao com o bd
@@ -93,6 +107,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return usuario;
     }
 
+    /**
+     * Metodo que faz o Get Buscando todos os usuarios
+     * @return
+     */
+    @Override
     public List<Usuario> getAllUsuarios() {
         List<Usuario> notes = new ArrayList<>();
 
@@ -124,7 +143,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return notes;
     }
 
-
+    /**
+     * Metodo que atualiza o usuario
+     * @param user
+     * @return
+     */
+    @Override
     public int putUsuario(Usuario user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -139,6 +163,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 new String[]{String.valueOf(user.getId())});
     }
 
+    /**
+     * metodo responsavel por deletar o usuario
+     * @param user
+     */
+    @Override
     public void deleteUsuario(Usuario user) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(Usuario.TABLE_NAME, Usuario.COLUMN_ID + " = ?",
