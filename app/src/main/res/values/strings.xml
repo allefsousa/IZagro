@@ -6,4 +6,11 @@
     <string name="hint_email">E-mail*</string>
     <string name="hint_sobrenome">Sobrenome*</string>
     <string name="hint_nome">Nome*</string>
+    <string name="data_nasc">Data Nasc:</string>
+    <string name="email">Email:</string>
+    <string name="sousa_santos">Sousa santos</string>
+    <string name="sobrenome">Sobrenome:</string>
+    <string name="allef">Allef</string>
+    <string name="nome">Nome:</string>
+    <string name="atualiza_o_de_cadastro">Atualização de Cadastro</string>
 </resources>

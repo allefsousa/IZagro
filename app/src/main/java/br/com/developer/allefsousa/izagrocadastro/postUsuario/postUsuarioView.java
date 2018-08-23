@@ -48,7 +48,7 @@ public class postUsuarioView extends AppCompatActivity implements postUsuarioCon
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_postusuario);
         getSupportActionBar().setTitle("Adicionar Cliente");
         ButterKnife.bind(this);
         Mpresenter = new postUsuarioPresenter(this,this);

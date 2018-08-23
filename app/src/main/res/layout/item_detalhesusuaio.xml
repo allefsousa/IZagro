@@ -50,7 +50,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:text="Nome: " />
+                        android:text="@string/nome" />
 
                     <TextView
                         android:id="@+id/tnome"
@@ -60,7 +60,7 @@
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
-                        android:text="Allef " />
+                        android:text="@string/allef" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -76,7 +76,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:text="Sobrenome: " />
+                        android:text="@string/sobrenome" />
 
                     <TextView
                         android:id="@+id/tsobrenome"
@@ -86,7 +86,7 @@
                         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
-                        android:text="Sousa santos" />
+                        android:text="@string/sousa_santos" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -102,7 +102,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:text="Email: " />
+                        android:text="@string/email" />
 
                     <TextView
                         android:id="@+id/temail"
@@ -129,7 +129,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        android:text="Data Nasc: " />
+                        android:text="@string/data_nasc" />
 
                     <TextView
                         android:id="@+id/tdatanasc"
