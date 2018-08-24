@@ -1,11 +1,11 @@
 # IZagro Cadastro
 
-
+[![CircleCI](https://circleci.com/gh/allefsousa/Adoro-Filmes.svg?style=svg)](https://circleci.com/gh/allefsousa/Adoro-Filmes)
 
 Esta versão do aplicativo é chamada IZagro e fornece uma base para outras amostras neste projeto. A amostra tem como objetivo:
 Realizar um CRUD utilizando SQlite e a arquitetura MVP.
 
-* Este é um Exemplo Basico de Cadastro utilizando a arquitetura [Model-View-Presenter](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) 
+* Este é um Exemplo Basico de Cadastro utilizando a arquitetura [Model-View-Presenter](https://github.com/googlesamples/android-architecture/tree/todo-mvp/) 
 
 * Saiba mais sobre Arquiteturas nos Repositorios da Google [project README](https://github.com/googlesamples/android-architecture/tree/master)
 * Definição de arquitetura [MVP](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter) 
