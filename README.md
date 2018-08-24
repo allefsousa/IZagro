@@ -1,6 +1,6 @@
 # IZagro Cadastro
 
-[![CircleCI](https://circleci.com/gh/ubiratansoares/tite/tree/master.svg?style=svg&circle-token=188c963e29f181c85e6c2559ca31ac3935fedc7e)](https://circleci.com/gh/ubiratansoares/tite/tree/master) 
+
 [![CircleCI](https://circleci.com/gh/allefsousa/Adoro-Filmes/tree/master.svg?style=svg&circle-token=f1358bf53675cedb14455531f3085e2b9a3d926b)](https://circleci.com/gh/allefsousa/Adoro-Filmes)
 
 Esta versão do aplicativo é chamada IZagro e fornece uma base para outras amostras neste projeto. A amostra tem como objetivo:
