@@ -1,6 +1,7 @@
 # IZagro Cadastro
 
-[![CircleCI](https://circleci.com/gh/allefsousa/Adoro-Filmes.svg?style=svg)](https://circleci.com/gh/allefsousa/Adoro-Filmes)
+[![CircleCI](https://circleci.com/gh/ubiratansoares/tite/tree/master.svg?style=svg&circle-token=188c963e29f181c85e6c2559ca31ac3935fedc7e)](https://circleci.com/gh/ubiratansoares/tite/tree/master) 
+[![CircleCI](https://circleci.com/gh/allefsousa/Adoro-Filmes/tree/master.svg?style=svg)](https://circleci.com/gh/allefsousa/Adoro-Filmes)
 
 Esta versão do aplicativo é chamada IZagro e fornece uma base para outras amostras neste projeto. A amostra tem como objetivo:
 Realizar um CRUD utilizando SQlite e a arquitetura MVP.
