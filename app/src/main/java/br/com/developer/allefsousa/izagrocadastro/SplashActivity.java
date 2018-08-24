@@ -7,15 +7,19 @@ import android.view.animation.Animation;
 
 import br.com.developer.allefsousa.izagrocadastro.operacaoUsuario.opUsuarioView;
 
+import static java.lang.Thread.sleep;
+
 public class SplashActivity extends AppCompatActivity {
 
-    private Thread splashTread;
-
+    Thread splashTread;
+    Animation fadeInAnimation;
+    Animation fadeInAnimation2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         startAnimation();
+
     }
 
     public void startAnimation() {
